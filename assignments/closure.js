@@ -1,6 +1,14 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
 
+const name = 'Shota'
+
+function laces (){
+  console.log(`Hey ${name} your shoelaces are undone.`)
+  }
+
+laces()
+
 
 // ==== Challenge 2: Create a counter function ====
 const counter = () => {
