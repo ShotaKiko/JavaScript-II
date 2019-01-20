@@ -90,9 +90,6 @@ function reducer(acc, val){
     return acc + val.donation
 }
 
-// runners.reduce(function(objacc, objCurrentValue){
-//     ticketPriceTotal.push(objacc.donation + objCurrentValue.donation)
-// })
 ticketPriceTotal.push(runners.reduce(reducer, 0))
 
 
@@ -125,4 +122,37 @@ runners.map(function(obj){
 console.log(winnersContactInfo.sort())
 
 // Problem 3
-// Continuing from the problem 1 before determine how many of the commemorative shirts are needed of each size.
+//Some scientist has a hypothesis that individuals with M shirt sizes are more generous with donations that individuals with S shirt sizes. So please unrealistically,
+//disregard regard all the other numerous variables involved and test the hypothesis by logging the amounts donated by each group.
+
+let hypothesisTestSmall = [];
+let hypothesisTestMedium = [];
+let hypothesisTestSmallAVG = [];
+let hypothesisTestMediumAVG = [];
+
+function reduceJuice(acc, val){
+    return acc + val
+}
+
+runners.filter(function(objSize){
+    if(objSize.shirt_size === 'S'){
+       hypothesisTestSmall.push(parseInt(objSize.donation)) 
+    }
+    else if(objSize.shirt_size === 'M'){
+        hypothesisTestMedium.push(parseInt(objSize.donation)) 
+     }
+    
+})
+
+console.log(hypothesisTestSmall)
+console.log(hypothesisTestMedium)
+
+hypothesisTestSmallAVG.push(hypothesisTestSmall.reduce(reduceJuice, 0))
+hypothesisTestMediumAVG.push(hypothesisTestMedium.reduce(reduceJuice, 0))
+
+const small = hypothesisTestSmallAVG/hypothesisTestSmall.length
+const medium = hypothesisTestMediumAVG/hypothesisTestMedium.length
+
+console.log(`The average donation by a size small shirt runner was $${Math.round(small)}.`)
+console.log(`The average donation by a size medium shirt runner was $${Math.round(medium)}.`)
+
