@@ -57,29 +57,72 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
 
-
-console.log(fullName);
+runners.forEach(function(obj){
+    fullName.push(`${obj.first_name} ${obj.last_name}` )
+})
+console.log(fullName)
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+runners.map(function(obj){
+    allCaps.push(`${obj.first_name.toUpperCase()}`)
+})
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+runners.filter(function(obj){
+    if (obj.shirt_size === 'L'){
+    largeShirts.push(`${obj.first_name} ${obj.last_name} wears a size large shirt.`)
+    }
+})
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
-console.log(ticketPriceTotal);
+
+function reducer(acc, val){
+    return acc + val.donation
+}
+
+// runners.reduce(function(objacc, objCurrentValue){
+//     ticketPriceTotal.push(objacc.donation + objCurrentValue.donation)
+// })
+ticketPriceTotal.push(runners.reduce(reducer, 0))
+
+
+console.log(`The total raised was $${ticketPriceTotal}`);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//If a runnner has donated $50 or more they get a free 5k run shirt. Log an array of the names of the individuals who did and their shirt size.
+let freeShirtWinners = [];
+
+runners.filter(function(obj){
+    if(obj.donation >= 50){
+        freeShirtWinners.push(`${obj.first_name} ${obj.last_name} receives a free size ${obj.shirt_size} 5K commemorative shirt.`)
+    }
+})
+
+console.log(freeShirtWinners)
 
 // Problem 2
+// Log the individiuals names in uppercase for readability(sure thats the reason) and emails in uppercase. Also alphabatize the list by last name.
+
+let winnersContactInfo = [];
+
+runners.map(function(obj){
+    winnersContactInfo.push(`${obj.last_name.toUpperCase()}, ${obj.first_name.toUpperCase()} ${obj.email}`)
+})
+
+console.log(winnersContactInfo.sort())
 
 // Problem 3
+// Continuing from the problem 1 before determine how many of the commemorative shirts are needed of each size.
