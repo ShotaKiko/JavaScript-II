@@ -11,9 +11,25 @@ laces()
 
 
 // ==== Challenge 2: Create a counter function ====
-const counter = () => {
+// const counter = () => {
   // Return a function that when invoked increments and returns a counter variable.
-};
+// };
+let newCounter = []
+function counter(){
+  console.count(newCounter)
+}
+newCounter = 1
+counter()
+newCounter = 2
+counter()
+counter()
+counter()
+newCounter = 3
+counter()
+
+
+
+
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
 // newCounter(); // 2
